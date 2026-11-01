@@ -1,0 +1,17 @@
+{
+  "name": "tickermint",
+  "description": "TickerMint trading card price API: MCP server and integration skill",
+  "owner": {
+    "name": "TickerMint",
+    "email": "hello@tickermint.cards"
+  },
+  "plugins": [
+    {
+      "name": "tickermint",
+      "source": "./",
+      "description": "Daily TCGplayer market prices and history for Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh cards: MCP server (no auth) plus a skill with the REST API rules (key, caching, attribution, plan choice, errors).",
+      "category": "development",
+      "homepage": "https://tickermint.cards/developers"
+    }
+  ]
+}

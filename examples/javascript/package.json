@@ -1,0 +1,19 @@
+{
+  "name": "tickermint-example-javascript",
+  "private": true,
+  "type": "module",
+  "description": "TickerMint API from Node 18+ with fetch: JavaScript and TypeScript",
+  "scripts": {
+    "start": "node price.mjs \"charizard ex 199/165\"",
+    "start:ts": "tsx price.ts \"charizard ex 199/165\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

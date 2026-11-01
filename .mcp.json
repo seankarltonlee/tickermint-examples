@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tickermint": {
+      "type": "http",
+      "url": "https://api.tickermint.cards/mcp"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "tickermint",
+  "version": "0.2.0",
+  "description": "Trading card prices for Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh: the TickerMint MCP server plus a skill with the API integration rules.",
+  "author": {
+    "name": "TickerMint",
+    "email": "hello@tickermint.cards",
+    "url": "https://tickermint.cards/developers"
+  },
+  "homepage": "https://tickermint.cards/developers",
+  "repository": "https://github.com/seankarltonlee/tickermint-examples",
+  "license": "MIT",
+  "keywords": ["pokemon", "tcg", "card-prices", "tcgplayer", "one-piece", "lorcana", "yugioh", "mcp", "api"]
+}

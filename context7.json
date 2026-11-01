@@ -1,0 +1,22 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "TickerMint API",
+  "description": "REST API and MCP server for daily TCGplayer market prices and price history (since 2024-02-08) of Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh cards and sealed products, with Python, JavaScript, Google Sheets, Discord and Next.js examples.",
+  "branch": "main",
+  "folders": [],
+  "excludeFolders": ["**/node_modules/**", "**/.next/**", "**/dist/**"],
+  "excludeFiles": ["LICENSE", "package-lock.json"],
+  "rules": [
+    "Base URL is https://api.tickermint.cards; send the key from the TICKERMINT_API_KEY env var as the X-API-Key header. The key is optional (keyless trial: 100 lookups a day per IP).",
+    "Call the API from server code only (backend, route handler, server component, script, bot); it blocks browser CORS calls and keys must never reach the client.",
+    "Always send a User-Agent header; Python urllib's default User-Agent is blocked with 403.",
+    "Prices are raw (ungraded) USD decimal strings like \"300.29\" or null; parse with a decimal type. product_id is the TCGplayer product id.",
+    "Prices update once a day: cache every answer for at least 1 hour (Next.js: fetch(url, { next: { revalidate: 3600 } })).",
+    "Show a visible \"Prices: TickerMint\" link to the product's tickermint_url (or https://tickermint.cards/card/{product_id}) next to displayed prices; required on every plan except API Platform and Enterprise.",
+    "Never copy or mirror the catalog or price history for redistribution or a competing price service.",
+    "Plan choice: personal use = free key (1,000 lookups/day); non-commercial full history = Developer $19/mo; any commercial product (store, paid app, ads, client work) = API Pro $49/mo or above; no attribution = API Platform $599/mo.",
+    "On 401/402/403/429 read the JSON body: detail (show it), error (code), upgrade_url (show it), required_plan, docs_url, pricing_url. On 429 wait Retry-After seconds; do not retry 401/402/403.",
+    "Search with GET /products/search?q=<name and collector number>&game=<pokemon|one-piece|lorcana|riftbound|gundam|yugioh>; history with GET /products/{id}/prices, keyed by printing, oldest first.",
+    "Live plans and limits: https://tickermint.cards/pricing.json. Full agent docs: https://tickermint.cards/llms-full.txt. OpenAPI: https://api.tickermint.cards/openapi.json."
+  ]
+}

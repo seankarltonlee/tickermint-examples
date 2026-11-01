@@ -1,0 +1,16 @@
+{
+  "name": "tickermint-discord-price-bot",
+  "private": true,
+  "type": "module",
+  "description": "Discord /price bot on the TickerMint card price API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
