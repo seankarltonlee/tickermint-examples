@@ -9,15 +9,15 @@ Rules for coding agents (Claude Code, Codex, Cursor, Copilot, Aider...) adding t
 - `product_id` is the TCGplayer product id. `group_id` is the set id.
 - Prices are raw (ungraded) market prices, in USD, as **decimal strings** (`"300.29"`) or `null`. Parse with `Decimal` / a decimal library, or `Number()` only for display. Never assume a number type.
 - History (`GET /products/{id}/prices`) is an object keyed by printing (`"Holofoil"`, `"Normal"`, `"Reverse Holofoil"`, ...), each an array of `{snapshot_date, low, market}` oldest first.
-- MCP server (no auth, no key, streamable HTTP): `https://api.tickermint.cards/mcp`, 300 tool calls a day. Use it for answering questions in chat; use the REST API in code.
-- Graded prices (PSA, BGS, CGC, SGC) are a paid add-on on API Pro and above, with their own source credit ("Prices from PriceCharting" with a link) that must stay visible.
+- MCP server (no auth, no key, streamable HTTP): `https://api.tickermint.cards/mcp`. ChatGPT, Claude and Perplexity are not capped; any other caller gets 300 tool calls a day. Use it for answering questions in chat; use the REST API in code.
+- Graded prices (PSA, BGS, CGC, SGC, TAG and ACE 10s, plus grades 1 to 9.5) are a paid add-on on API Pro and above, with their own source credit ("Prices from PriceCharting" with a link) that must stay visible.
 
 ## Rules
 
 1. **Key from the environment.** Read the key from `TICKERMINT_API_KEY`. Send it as the header `X-API-Key: <key>` (`?key=` only where headers are impossible, such as spreadsheet formulas). Never hardcode it, never commit it, add `TICKERMINT_API_KEY=` to `.env.example`. Treat the key as optional: without one the API still answers 25 card lookups a day per IP (current price plus 30 days of history, personal use, to try the API). A key comes with a plan; every plan starts with a 7-day trial (card required, cancel online anytime) at `https://tickermint.cards/developers#plan`. Put that URL in the `.env.example` comment.
 2. **Server side only.** Call the API from a backend, route handler, server component, script or bot. Browsers on other sites are blocked by CORS, and a key in client code leaks. In Next.js never name it `NEXT_PUBLIC_...`.
 3. **Set a User-Agent.** Send `User-Agent: <your-app>/<version>`. Python's default urllib User-Agent is blocked (403) by the firewall.
-4. **Cache.** Prices update once a day. Cache every answer for at least 1 hour (Next.js: `fetch(url, { next: { revalidate: 3600 } })`; elsewhere an in-memory or Redis TTL cache). Do not poll in loops.
+4. **Cache.** Prices update once a day. Cache every answer for at least 1 hour and no longer than 24 hours (Next.js: `fetch(url, { next: { revalidate: 3600 } })`; elsewhere an in-memory or Redis TTL cache). Do not poll in loops.
 5. **Show the attribution link.** Wherever prices are displayed (web, app, bot message, published sheet), show a visible "Prices: TickerMint" link to the card page: the `tickermint_url` field of product responses, or `https://tickermint.cards/card/{product_id}`. Required without a key and on Developer, API Pro and API Business. Only API Platform and Enterprise may omit it.
 6. **No mirroring.** Do not write code that copies the whole catalog or full price history into a database to redistribute or resell it, or to run a competing price service. Storing the prices your own product displays, as a cache, is fine.
 7. **Pick the plan from the use case** and tell the user which one they need:

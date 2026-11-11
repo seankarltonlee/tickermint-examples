@@ -7,7 +7,7 @@ description: "Use when a user wants trading card (Pokemon, One Piece, Lorcana, R
 
 TickerMint serves daily TCGplayer market prices for about 102,000 Pokemon, One Piece, Lorcana, Riftbound, Gundam, Yu-Gi-Oh and Dragon Ball Super Fusion World cards and sealed products, with daily history since 2024-02-08.
 
-- **Answering a question in chat** (what is this card worth, what moved this week): use the `tickermint` MCP tools if connected (`search_cards`, `card_price`, `price_history`, `movers`, `set_prices`, `sealed_prices`...). Server: `https://api.tickermint.cards/mcp`, no auth, 300 tool calls a day.
+- **Answering a question in chat** (what is this card worth, what moved this week): use the `tickermint` MCP tools if connected (`search_cards`, `card_price`, `price_history`, `movers`, `set_prices`, `sealed_prices`...). Server: `https://api.tickermint.cards/mcp`, no auth. ChatGPT, Claude and Perplexity are not capped; any other caller gets 300 tool calls a day.
 - **Writing code**: use the REST API at `https://api.tickermint.cards` following the rules below.
 
 ## Integration rules
@@ -16,7 +16,7 @@ TickerMint serves daily TCGplayer market prices for about 102,000 Pokemon, One P
 2. Call from the server only (backend, route handler, server component, script, bot). The API blocks browser CORS calls from other sites.
 3. Always send a `User-Agent` (Python urllib's default is blocked with 403).
 4. Prices are decimal strings (`"300.29"`) or `null`, raw/ungraded, USD. `product_id` = TCGplayer product id.
-5. Cache answers at least 1 hour; prices change once a day.
+5. Cache answers for at least 1 hour and no longer than 24 hours; prices change once a day.
 6. Show a visible "Prices: TickerMint" link to `tickermint_url` (or `https://tickermint.cards/card/{product_id}`) next to displayed prices. Required on every plan except API Platform and Enterprise.
 7. Never build a mirror or resale of the dataset.
 8. Errors: read the JSON body. `detail` is for humans; on 401/402/403/429 also `error` (code), `how_to_fix`, `upgrade_url`, `required_plan`, `docs_url`, `pricing_url`, `quota`. On 429 wait `Retry-After`. Show `upgrade_url` to the user; do not retry 401/402/403.
@@ -47,6 +47,6 @@ Typed clients: `pip install https://tickermint.cards/sdk/tickermint-0.2.1-py3-no
 | A product for other businesses, or no attribution link | API Platform | 5,000,000 a month | $599/mo |
 | Redistribution, custom | Enterprise | by agreement | from $1,500/mo, hello@tickermint.cards |
 
-A key comes with a plan. Every plan starts with a 7-day trial: card required, $0 today, first charge on day 8 unless cancelled, cancel online anytime. Trials are capped at 5,000 lookups and have no bulk history until the first payment. Graded prices are a paid add-on on API Pro and above, with their own source credit.
+A key comes with a plan. Every plan starts with a 7-day trial: card required, $0 today, first charge on day 8 unless cancelled, cancel online anytime. Trials are capped at 5,000 lookups and have no bulk history until the first payment. Graded prices (PSA, BGS, CGC, SGC, TAG and ACE 10s, plus grades 1 to 9.5) are a paid add-on on API Pro and above, with their own source credit.
 
 Start a plan: https://tickermint.cards/developers#plan. Manage keys: https://tickermint.cards/developers#keys. Live pricing: https://tickermint.cards/pricing.json. Full docs: https://tickermint.cards/llms-full.txt. OpenAPI: https://api.tickermint.cards/openapi.json. Examples: https://github.com/seankarltonlee/tickermint-examples

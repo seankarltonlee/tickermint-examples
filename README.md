@@ -6,7 +6,7 @@ This repo has copy-paste examples and the rules a coding agent needs to wire it 
 - Base URL: `https://api.tickermint.cards`
 - Auth: optional header `X-API-Key: $TICKERMINT_API_KEY` (or `?key=`). Without a key you get 25 card lookups a day per IP to try it. A key comes with a plan, and every plan starts with a 7-day trial (card required): [tickermint.cards/developers#plan](https://tickermint.cards/developers#plan).
 - Product ids are TCGplayer product ids. Prices are raw (ungraded) and are **decimal strings** in JSON (`"300.29"`), `null` when unpriced.
-- Prices update once a day: cache answers for at least an hour.
+- Prices update once a day: cache for at least 1 hour and no longer than 24 hours.
 - Show a "Prices: TickerMint" link to `https://tickermint.cards/card/{product_id}` next to prices (all plans below API Platform).
 
 ## Which plan do I need?
@@ -30,8 +30,8 @@ How to get a key: a key comes with a plan. Every plan starts with a 7-day trial,
 - "Full history beyond 90 days" counts the different products whose full history you fetch in a calendar month (`/v1/bulk/history`, `/v1/bulk/day` for days older than 7 days, or a single-card history call reaching back more than 90 days). `?days=90` or less and today's bulk prices never count.
 - Over the monthly quota there is a 10% grace, then HTTP 429 until the month resets. There is no overage billing.
 - Yearly billing is 2 months free.
-- Graded prices (PSA, BGS, CGC, SGC) are a paid add-on on API Pro and above ($149/mo or $1,490/yr). Every graded value carries its own source credit ("Prices from PriceCharting" with a link), which must stay visible.
-- MCP server: 300 tool calls a day.
+- Graded prices (PSA, BGS, CGC, SGC, TAG and ACE 10s, plus grades 1 to 9.5) are a paid add-on on API Pro and above ($149/mo or $1,490/yr). Every graded value carries its own source credit ("Prices from PriceCharting" with a link), which must stay visible.
+- MCP server: ChatGPT, Claude and Perplexity are not capped; any other caller gets 300 tool calls a day.
 
 What no plan allows: copying or mirroring the catalog or price history as a dataset for redistribution, or reselling it as a competing price service (Enterprise by agreement only). Full terms: [tickermint.cards/developers#terms](https://tickermint.cards/developers#terms).
 
@@ -91,7 +91,7 @@ Or the typed client: `npm install https://tickermint.cards/sdk/tickermint-0.2.1.
 
 ### MCP (Claude, ChatGPT, Cursor, any MCP client)
 
-Remote server, streamable HTTP, read-only, no auth and no key: `https://api.tickermint.cards/mcp`. Limit: 300 tool calls a day.
+Remote server, streamable HTTP, read-only, no auth and no key: `https://api.tickermint.cards/mcp`. ChatGPT, Claude and Perplexity are not capped; any other caller gets 300 tool calls a day.
 
 ```json
 { "mcpServers": { "tickermint": { "type": "http", "url": "https://api.tickermint.cards/mcp" } } }
