@@ -14,7 +14,7 @@ DISCORD_TOKEN=... TICKERMINT_API_KEY=... npm start
 # while testing, DISCORD_GUILD_ID=<server id> registers /price instantly in that server
 ```
 
-`TICKERMINT_API_KEY` is optional: without it the bot uses the keyless trial (100 lookups a day for your server's IP, 30 days of history). A free key (email only, https://tickermint.cards/developers#keys) gives 1,000 a day. Each `/price` costs about 2 lookups; answers are cached for an hour.
+`TICKERMINT_API_KEY` is optional: without it the bot gets 25 lookups a day for your server's IP and 30 days of history, enough to try it. A key comes with a plan, and every plan starts with a 7-day trial (card required): https://tickermint.cards/developers#plan. Each `/price` costs about 2 lookups; answers are cached for an hour.
 
 Try the reply without Discord:
 
@@ -26,5 +26,6 @@ Live output on 2026-10-31: Market $2,209.75, 30 days (Holofoil) -3.6%, range $2,
 
 ## Plans
 
-- A bot for your own server or friends, no money involved: free key.
+- Trying the bot: no key (25 lookups a day, about 12 `/price` calls).
+- A bot for your own server or friends, no money involved: Developer ($19/mo, 50,000 lookups a month).
 - A bot you sell, put behind a paid tier, or run for a store or a paid community: API Pro ($49/mo) or above. See [Which plan do I need?](../../README.md#which-plan-do-i-need).

@@ -3,6 +3,10 @@
 //
 //   DISCORD_TOKEN=... TICKERMINT_API_KEY=... node index.js
 //
+// TICKERMINT_API_KEY is optional: without it you get 25 lookups a day per IP.
+// A key comes with a plan (7-day trial, card required):
+// https://tickermint.cards/developers#plan
+//
 // discord.js v14, Node 18+. The slash command registers globally on startup
 // (it can take a few minutes to show up the first time; set DISCORD_GUILD_ID to
 // register it instantly in one server while testing).
@@ -83,6 +87,7 @@ const command = new SlashCommandBuilder()
         { name: "Riftbound", value: "riftbound" },
         { name: "Gundam", value: "gundam" },
         { name: "Yu-Gi-Oh", value: "yugioh" },
+        { name: "Dragon Ball Super Fusion World", value: "fusion-world" },
       ),
   );
 

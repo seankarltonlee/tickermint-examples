@@ -23,8 +23,9 @@ Prices: TickerMint https://tickermint.cards/card/510153/elsa-spirit-of-winter-en
 
 Notes:
 
+- Without a key you get 25 lookups a day per IP (each run costs 2). A key comes with a plan, and every plan starts with a 7-day trial (card required): https://tickermint.cards/developers#plan.
 - Always send a `User-Agent`: the API's firewall blocks urllib's default one (403).
 - Prices are decimal strings; the script uses `Decimal`.
 - Errors print `detail` and the `upgrade_url` the API returns on 401/402/403/429.
 
-For more than a script, use the typed client: `pip install https://tickermint.cards/sdk/tickermint-0.2.0-py3-none-any.whl` ([docs](https://tickermint.cards/developers/python)).
+For more than a script, use the typed client: `pip install https://tickermint.cards/sdk/tickermint-0.2.1-py3-none-any.whl` ([docs](https://tickermint.cards/developers/python)).

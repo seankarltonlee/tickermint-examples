@@ -5,9 +5,9 @@
 //   node price.mjs "luffy op05-119" one-piece
 //
 // Node 18+ (built-in fetch), no dependencies. Set TICKERMINT_API_KEY for your
-// own quota (free key: https://tickermint.cards/developers#keys); without it
-// you get the keyless trial, 100 lookups a day per IP. Run it server side: the
-// API does not accept browser calls from other websites.
+// own quota; without it you get 25 lookups a day per IP. A key comes with a
+// plan (7-day trial, card required): https://tickermint.cards/developers#plan
+// Run it server side: the API does not accept browser calls from other websites.
 
 const API = "https://api.tickermint.cards";
 

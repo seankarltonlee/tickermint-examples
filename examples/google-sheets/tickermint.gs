@@ -1,19 +1,20 @@
 /**
  * =TICKERMINT("card name") for Google Sheets: the latest TCGplayer market
- * price of a Pokemon, One Piece, Lorcana, Riftbound, Gundam or Yu-Gi-Oh card
- * from the TickerMint API.
+ * price of a Pokemon, One Piece, Lorcana, Riftbound, Gundam, Yu-Gi-Oh or
+ * Dragon Ball Super Fusion World card from the TickerMint API.
  *
  * Install: Extensions > Apps Script, paste this file, save.
- * Optional key (1,000 lookups a day instead of 100 shared): Project Settings >
- * Script properties > add TICKERMINT_API_KEY. Free key with an email at
- * https://tickermint.cards/developers#keys
+ * Without a key the sheet shares 25 lookups a day per Google IP.
+ * Optional key: Project Settings > Script properties > add TICKERMINT_API_KEY.
+ * A key comes with a plan (7-day trial, card required):
+ * https://tickermint.cards/developers#plan
  *
  * Show "Prices: TickerMint" next to the prices you publish, linking to the
  * card page: =TICKERMINT("charizard ex 199/165", "url").
  *
  * @param {string} query Card name, collector number or TickerMint product id.
  * @param {string} field Optional: market (default), low, name, url, id or date.
- * @param {string} game Optional: pokemon, one-piece, lorcana, riftbound, gundam or yugioh.
+ * @param {string} game Optional: pokemon, one-piece, lorcana, riftbound, gundam, yugioh or fusion-world.
  * @return The value as a number (prices) or text.
  * @customfunction
  */

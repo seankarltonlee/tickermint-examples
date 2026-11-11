@@ -2,6 +2,8 @@
 // route handlers: it reads TICKERMINT_API_KEY, which must never reach the browser
 // (do not rename it NEXT_PUBLIC_...). The API also refuses browser calls from
 // other websites, so server side is the only place to call it.
+// The key is optional: without it you get 25 lookups a day per IP. A key comes
+// with a plan (7-day trial, card required): https://tickermint.cards/developers#plan
 
 const API = "https://api.tickermint.cards";
 

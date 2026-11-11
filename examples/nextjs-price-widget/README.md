@@ -11,7 +11,7 @@ lib/tickermint.ts            server-side fetch helpers and types
 
 ```sh
 npm install
-cp .env.example .env.local   # TICKERMINT_API_KEY is optional for the keyless trial
+cp .env.example .env.local   # TICKERMINT_API_KEY is optional (25 lookups a day per IP without it)
 npm run dev                  # http://localhost:3000/?q=umbreon%20vmax%20215/203
 ```
 
@@ -34,4 +34,4 @@ Rules this example follows (copy them into your app):
 - The price card always shows "Prices: TickerMint" linked to the card page (required on every plan below API Platform).
 - Errors surface the API's `detail` and `upgrade_url`.
 
-A store, a paid app or a site with ads is commercial use: API Pro ($49/mo) or above. See [Which plan do I need?](../../README.md#which-plan-do-i-need).
+To get a key, start a plan (7-day trial, card required) at https://tickermint.cards/developers#plan. A store, a paid app or a site with ads is commercial use: API Pro ($49/mo) or above. See [Which plan do I need?](../../README.md#which-plan-do-i-need).

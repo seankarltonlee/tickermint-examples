@@ -1,17 +1,20 @@
 # TickerMint API examples
 
-> Examples and agent rules for the TickerMint REST API (https://api.tickermint.cards) and MCP server (https://api.tickermint.cards/mcp): daily TCGplayer market prices since 2024-02-08 for about 130,000 Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh cards and sealed products.
+> Examples and agent rules for the TickerMint REST API (https://api.tickermint.cards) and MCP server (https://api.tickermint.cards/mcp): daily TCGplayer market prices since 2024-02-08 for about 102,000 Pokemon, One Piece, Lorcana, Riftbound, Gundam, Yu-Gi-Oh and Dragon Ball Super Fusion World cards and sealed products.
 
-Key rules: send TICKERMINT_API_KEY as the X-API-Key header (optional, keyless trial is 100 lookups a day per IP); call from server code with a User-Agent; prices are decimal strings; cache answers at least 1 hour; show a visible "Prices: TickerMint" link to tickermint_url next to prices (all plans below API Platform); commercial use needs API Pro ($49/mo) or above; never mirror the dataset.
+Key rules: send TICKERMINT_API_KEY as the X-API-Key header (optional: without a key the API answers 25 lookups a day per IP with 30 days of history, for personal use, to try it); a key comes with a plan and every plan starts with a 7-day trial, card required, at https://tickermint.cards/developers#plan (trials: 5,000 lookups and no bulk history until the first payment); Developer is $19/mo with 50,000 lookups a month for personal use; call from server code with a User-Agent; prices are decimal strings; cache answers at least 1 hour; show a visible "Prices: TickerMint" link to tickermint_url next to prices (all plans below API Platform); commercial use needs API Pro ($49/mo) or above; graded prices are a paid add-on on API Pro and above with their own source credit; the MCP server allows 300 tool calls a day; never mirror the dataset.
+
+Moving from pokemontcg.io: its API keys stop working on March 1, 2027. GET /cards/{pokemontcg.io id} (for example /cards/sv3pt5-199) returns the same card with today's market price, so stored ids keep working. Endpoint mapping and examples: README section "Moving from pokemontcg.io" and https://tickermint.cards/pokemon-tcg-api.
 
 ## Docs
 
-- [README](https://raw.githubusercontent.com/seankarltonlee/tickermint-examples/main/README.md): plan table, quickstarts, attribution, errors, endpoints
+- [README](https://raw.githubusercontent.com/seankarltonlee/tickermint-examples/main/README.md): plan table, quickstarts, attribution, errors, endpoints, moving from pokemontcg.io
 - [AGENTS.md](https://raw.githubusercontent.com/seankarltonlee/tickermint-examples/main/AGENTS.md): integration rules for coding agents
 - [Agent Skill](https://raw.githubusercontent.com/seankarltonlee/tickermint-examples/main/skills/tickermint/SKILL.md)
 - [Full API docs](https://tickermint.cards/llms-full.txt)
 - [OpenAPI](https://api.tickermint.cards/openapi.json)
 - [Pricing (JSON)](https://tickermint.cards/pricing.json)
+- [Moving from pokemontcg.io](https://tickermint.cards/pokemon-tcg-api)
 
 ## Examples
 

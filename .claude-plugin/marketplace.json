@@ -9,7 +9,7 @@
     {
       "name": "tickermint",
       "source": "./",
-      "description": "Daily TCGplayer market prices and history for Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh cards: MCP server (no auth) plus a skill with the REST API rules (key, caching, attribution, plan choice, errors).",
+      "description": "Daily TCGplayer market prices and history for Pokemon, One Piece, Lorcana, Riftbound, Gundam, Yu-Gi-Oh and Dragon Ball Super Fusion World cards: MCP server (no auth) plus a skill with the REST API rules (key, caching, attribution, plan choice, errors).",
       "category": "development",
       "homepage": "https://tickermint.cards/developers"
     }

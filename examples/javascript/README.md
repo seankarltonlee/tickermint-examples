@@ -24,6 +24,6 @@ Market price: $5749.97
 Prices: TickerMint https://tickermint.cards/card/632503/monkey-d-luffy-119-sp-op05-119
 ```
 
-Set `TICKERMINT_API_KEY` for your own quota (free key: https://tickermint.cards/developers#keys). Run this server side: the API does not accept browser calls from other sites, and a key in browser code leaks.
+Without a key you get 25 lookups a day per IP (each run costs 2). Set `TICKERMINT_API_KEY` for your own quota: a key comes with a plan, and every plan starts with a 7-day trial (card required) at https://tickermint.cards/developers#plan. Run this server side: the API does not accept browser calls from other sites, and a key in browser code leaks.
 
-For a bigger project use the typed client: `npm install https://tickermint.cards/sdk/tickermint-0.2.0.tgz` ([docs](https://tickermint.cards/developers/javascript)).
+For a bigger project use the typed client: `npm install https://tickermint.cards/sdk/tickermint-0.2.1.tgz` ([docs](https://tickermint.cards/developers/javascript)).

@@ -3,8 +3,10 @@
 //   npx tsx price.ts "charizard ex 199/165"
 //   (or: npx tsc && node dist/price.js "charizard ex 199/165")
 //
-// Node 18+, no runtime dependencies. Reads TICKERMINT_API_KEY when set.
-// Prefer the typed client for bigger projects: npm install https://tickermint.cards/sdk/tickermint-0.2.0.tgz
+// Node 18+, no runtime dependencies. Reads TICKERMINT_API_KEY when set; without
+// it you get 25 lookups a day per IP. A key comes with a plan (7-day trial,
+// card required): https://tickermint.cards/developers#plan
+// Prefer the typed client for bigger projects: npm install https://tickermint.cards/sdk/tickermint-0.2.1.tgz
 
 const API = "https://api.tickermint.cards";
 

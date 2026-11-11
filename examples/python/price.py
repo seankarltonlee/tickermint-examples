@@ -5,9 +5,9 @@ Usage:
     python price.py "charizard ex 199/165"
     python price.py "luffy op01-120" --game one-piece
 
-Standard library only. Set TICKERMINT_API_KEY for your own quota (free key:
-https://tickermint.cards/developers#keys); without it you get the keyless
-trial, 100 lookups a day per IP.
+Standard library only. Set TICKERMINT_API_KEY for your own quota; without it
+you get 25 lookups a day per IP. A key comes with a plan (7-day trial, card
+required): https://tickermint.cards/developers#plan
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("query", help='card name, e.g. "charizard ex 199/165"')
     ap.add_argument(
-        "--game", help="pokemon, one-piece, lorcana, riftbound, gundam or yugioh (default: all)"
+        "--game", help="pokemon, one-piece, lorcana, riftbound, gundam, yugioh or fusion-world (default: all)"
     )
     args = ap.parse_args()
 

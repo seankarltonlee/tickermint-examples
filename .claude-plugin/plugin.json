@@ -1,7 +1,7 @@
 {
   "name": "tickermint",
-  "version": "0.2.0",
-  "description": "Trading card prices for Pokemon, One Piece, Lorcana, Riftbound, Gundam and Yu-Gi-Oh: the TickerMint MCP server plus a skill with the API integration rules.",
+  "version": "0.2.1",
+  "description": "Trading card prices for Pokemon, One Piece, Lorcana, Riftbound, Gundam, Yu-Gi-Oh and Dragon Ball Super Fusion World: the TickerMint MCP server plus a skill with the API integration rules.",
   "author": {
     "name": "TickerMint",
     "email": "hello@tickermint.cards",
